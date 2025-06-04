@@ -13,6 +13,7 @@ int main() {
     int escolhaJogador, numeroMovimentosTorre, numeroMovimentosRainha, numeroMovimentosBispo, numeroMovimentosCavalo;
     int rainha = 1, bispo = 1, torre = 1, cavalo = 1;
  
+    
     //Menu de escolha para qual peça será movida
     printf("Escolha uma peça para mover:\n");
     printf("1 - Rainha\n");
@@ -68,7 +69,7 @@ int main() {
         break;
     case 4:
 
-    printf("Escolha se o cavalo ira para frente, para tras ou para os lados:\n");
+    printf("Escolha se o cavalo ira para frente, para tras, para ou direita");
     scanf("%s", direcao);
     printf("Escolha se o cavalo ira a esquerda ou direita, ao percorrer as duas casas,:\n");
     scanf("%s", direcao1);
