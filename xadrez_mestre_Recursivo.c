@@ -1,90 +1,90 @@
 #include <stdio.h>
 
+// Função recursiva para Torre
 void moverTorreRecursivo(int casas, char direcao[40]) {
- if (casas > 0){
-    printf("Torre se moveu para %s uma vez\n", direcao);
-    moverTorreRecursivo(casas - 1, direcao);
-}}
+    if (casas > 0) {
+        printf("Torre se moveu para %s uma vez\n", direcao);
+        moverTorreRecursivo(casas - 1, direcao);
+    }
+}
+
+// Função recursiva para Bispo
+void moverBispoRecursivo(int casas, char direcao[40]) {
+    if (casas > 0) {
+        printf("Bispo se moveu para %s uma vez\n", direcao);
+        moverBispoRecursivo(casas - 1, direcao);
+    }
+}
+
+// Função recursiva para Rainha
+void moverRainhaRecursivo(int casas, char direcao[40]) {
+    if (casas > 0) {
+        printf("Rainha se moveu para %s uma vez\n", direcao);
+        moverRainhaRecursivo(casas - 1, direcao);
+    }
+}
 
 int main() {
+    // Variáveis
+    char direcao[40];
+    int escolhaJogador;
+    int numeroMovimentosTorre, numeroMovimentosRainha, numeroMovimentosBispo;
 
-    //variaveis para escolhas do usuario
-    char direcao[40], direcao1[30];
-    int escolhaJogador, numeroMovimentosTorre, numeroMovimentosRainha, numeroMovimentosBispo, numeroMovimentosCavalo;
-    int rainha = 1, bispo = 1, torre = 1, cavalo = 1;
- 
-    
-    //Menu de escolha para qual peça será movida
+    // Menu de escolha
     printf("Escolha uma peça para mover:\n");
     printf("1 - Rainha\n");
     printf("2 - Torre\n");
-    printf("3 - Bispo\n");   
-    printf("4 - Cavalo\n");  
+    printf("3 - Bispo\n");
+    printf("4 - Cavalo\n");
     printf("5 - Sair\n");
     scanf("%d", &escolhaJogador);
 
-    //Verificação se a escolha é valida
-    while (escolhaJogador < 1 || escolhaJogador > 5){
+    // Verificação
+    while (escolhaJogador < 1 || escolhaJogador > 5) {
         printf("Escolha inválida! Tente novamente:\n");
         scanf("%d", &escolhaJogador);
     }
 
-    //Inicio da logica
-    switch (escolhaJogador)
-    {
-    case 1:
-    printf("Escolha o numero de Movimentos:\n");
-    scanf("%d", &numeroMovimentosRainha);
+    //switch de escolha do jogador
+    switch (escolhaJogador) {
+        case 1:
+            printf("Escolha o número de movimentos:\n");
+            scanf("%d", &numeroMovimentosRainha);
+            printf("Escolha a direção dos movimentos:\n");
+            scanf("%s", direcao);
+            moverRainhaRecursivo(numeroMovimentosRainha, direcao);
+            break;
 
-    printf("Escolha a direção dos Movimentos:\n");
-    scanf("%s", direcao);
+        case 2:
+            printf("Escolha o número de movimentos:\n");
+            scanf("%d", &numeroMovimentosTorre);
+            printf("Escolha a direção dos movimentos:\n");
+            scanf("%s", direcao);
+            moverTorreRecursivo(numeroMovimentosTorre, direcao);
+            break;
 
-        for (rainha = 1; rainha <= numeroMovimentosRainha; rainha++) 
-        {
-          printf("Rainha se moveu para %s uma vez\n", direcao);
-        }
-        break;
-    case 2:
-    printf("Escolha o numero de Movimentos:\n");
-    scanf("%d", &numeroMovimentosTorre);
+        case 3:
+            printf("Escolha o número de movimentos:\n");
+            scanf("%d", &numeroMovimentosBispo);
+            printf("Escolha a direção dos movimentos:\n");
+            scanf("%s", direcao);
+            moverBispoRecursivo(numeroMovimentosBispo, direcao);
+            break;
 
-    printf("Escolha a direção dos Movimentos:\n");
-    scanf("%s", direcao);
-        
-        // Aqui chamamos a função recursiva de verdade!
-        moverTorreRecursivo(numeroMovimentosTorre, direcao);
-        break;
-        
-    case 3:
-    printf("Escolha o numero de Movimentos:\n");
-    scanf("%d", &numeroMovimentosBispo);
+        case 4:
+            printf("Escolha a direção do cavalo (ex: Duas_para_cima_uma_para_direita):\n");
+            scanf("%d", direcao);
+            for (int i = 1; i <= 1; i++) 
+            {   for ( int j = 1; j <= 2; j++ )
+            printf("Cavalo se moveu para cima uma vez\n");
+            }
+            printf("Cavalo se moveu para Direita uma vez\n");
+            break;
 
-    printf("Escolha a direção dos Movimentos (ex: Caso queria que o bispo se mova uma 1 para a diagonal superior esquerda, coloque 'Cima_e_Esquerda'):\n");
-    scanf("%s", direcao);
-
-        for (bispo = 1; bispo <= numeroMovimentosBispo; bispo++) 
-        {
-          printf("Bispo se moveu para %s uma vez\n", direcao);
-        } /// ver como melhorar os movimentos do bispo
-        break;
-    case 4:
-
-    printf("Escolha se o cavalo ira para frente, para tras, para ou direita");
-    scanf("%s", direcao);
-    printf("Escolha se o cavalo ira a esquerda ou direita, ao percorrer as duas casas,:\n");
-    scanf("%s", direcao1);
-
-        for (numeroMovimentosCavalo = 1; numeroMovimentosCavalo <= 2; numeroMovimentosCavalo++) 
-        { 
-          printf("Cavalo se moveu para cima uma vez\n");
-        }
-          printf("Cavalo se moveu para Direita uma vez\n");
-        break;
-    case 5:
-    {
-        printf("Saindo...\n");
+        case 5:
+            printf("Saindo...\n");
+            break;
     }
-        break;
-    } 
-return 0;
+
+    return 0;
 }
